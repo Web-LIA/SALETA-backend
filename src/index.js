@@ -15,7 +15,7 @@ connectDatabase();
 app.use(routes);
 app.get('/', (req, res) => {
     return res.json({
-        teste: "teste"
+        teste: "Backend Works!"
     });
 });
 

@@ -9,12 +9,15 @@ export default {
     },
 
     async create(req, res) {
-        const { name } = req.body;
-        if (!name) {
-            return res.status(400).json({error: "Necessário um name"});
+        const { title, color, size, description } = req.body;
+        if (!title) {
+            return res.status(400).json({error: "Necessário um título"});
         }
         const itemCreated = await Item.create({
-            name
+            title,
+            color,
+            size,
+            description
         });
         return res.json(itemCreated);
     },
