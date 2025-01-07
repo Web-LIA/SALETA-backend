@@ -9,7 +9,7 @@ export default {
     },
 
     async create(req, res) {
-        const { title, color, size, description } = req.body;
+        const { title, color, size, description, photo } = req.body;
         if (!title) {
             return res.status(400).json({error: "Necessário um título"});
         }
@@ -17,7 +17,8 @@ export default {
             title,
             color,
             size,
-            description
+            description,
+            photo
         });
         return res.json(itemCreated);
     },

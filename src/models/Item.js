@@ -23,9 +23,10 @@ const Item = new mongoose.Schema({
         type: Boolean,
         default: false
     },
-    // image: {
-    // }
-    // aprender como salvar imagem no banco de dados
+    photo: {
+        type: String,
+        default: ""
+    }
 });
 
 mongoose.model("itens", Item);
