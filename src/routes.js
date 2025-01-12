@@ -10,4 +10,7 @@ routes.post('/itens', ItemController.create);
 // USUARIOS
 routes.get('/usuarios', UserController.read);
 routes.post('/usuarios', UserController.create);
+
+//Login
+routes.post('/login', UserController.search )
 export default routes;

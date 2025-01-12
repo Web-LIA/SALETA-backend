@@ -5,8 +5,8 @@ const User = mongoose.model("users");
 
 export default {
     async read (req, res){
-        const itemList = await Item.find();
-        return res.json(itemList);
+        const UserList = await User.find();
+        return res.json(UserList);
     },
 
     async create(req, res) {
@@ -23,4 +23,18 @@ export default {
         });
         return res.json(userCreated);
     },
+    async search(req,res){
+        const {login,password} = req.body
+        const user = await User.find({login:login});
+        console.log(user)
+        console.log("login " + login  + " senha:" + password)
+        if(!user){
+            return res.json({error: "Usuário não existe"});
+        }
+        if(user[0].password != password){
+            return res.json({error: "Senha incorreta"});
+        }
+        return res.json(user);
+        
+    }
 }
