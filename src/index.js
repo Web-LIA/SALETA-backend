@@ -11,6 +11,9 @@ app.use(express.json());
 // MONGOOSE
 connectDatabase();
 
+//ESP32
+
+
 // ROUTES
 app.use(routes);
 app.get('/', (req, res) => {
