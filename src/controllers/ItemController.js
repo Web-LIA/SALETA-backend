@@ -22,4 +22,17 @@ export default {
         });
         return res.json(itemCreated);
     },
+
+    async delete(req, res) {
+        const id = req.params.id
+        if (!id) {
+            return res.status(400).json({error: "Necessário um id"});
+        }
+        const itemDeleted = await Note.findOneAndDelete({_id: id});
+        if (itemDeleted) {
+            return res.json(itemDeleted);
+        } else {
+            return res.status(401).json({error: "Não foi encontrado o item para deletar"});
+        }
+    }
 }
