@@ -28,7 +28,7 @@ export default {
         if (!id) {
             return res.status(400).json({error: "Necessário um id"});
         }
-        const itemDeleted = await Note.findOneAndDelete({_id: id});
+        const itemDeleted = await Item.findOneAndDelete({_id: id});
         if (itemDeleted) {
             return res.json(itemDeleted);
         } else {
