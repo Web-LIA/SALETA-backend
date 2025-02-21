@@ -28,7 +28,7 @@ export default {
         if(photos) {
             return res.status(400).json({error: "Fotos não recebidas"});
         } 
-        const session = await Session.findOne({_id: id});
+        const session = await Session.findOne({_id: sessionId});
         if (session.photos) {
             session.photos = photos;
         } 
