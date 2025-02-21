@@ -6,10 +6,12 @@ const Session = new mongoose.Schema({
         required: true
     },
     userId: {
-        type: mongoose.Schema.Types.ObjectId
+        // type: mongoose.Schema.Types.ObjectId:
+        type: String
     },
     itemId: {
-        type: mongoose.Schema.Types.ObjectId
+        // type: mongoose.Schema.Types.ObjectId
+        type: String
     },
     date: {
         type: Date,

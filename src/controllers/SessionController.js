@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import '../models/Session.js';
 const Session = mongoose.model("sessions");
-let lastSessionId = "";
+let lastSessionId = "TESTE";
 
 export default {
     async read (req, res){
@@ -10,8 +10,10 @@ export default {
     },
 
     async create(req, res) {
-        const { type, userId, itemId } = req.params;
-        if (type !== "guardar" || type !== "buscar") {
+        const type = req.params.type;
+        const userId = req.params.userId;
+        const itemId = req.params.itemId;
+        if (type != "guardar" || type != "buscar") {
             return res.status(400).json({error: "tipo indevido"});
         }
         // falta verificar se o userId e itemId são corretos
