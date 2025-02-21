@@ -33,7 +33,7 @@ export default {
     async sendEspPhotos(req, res) {
         const photos = req.body.photos
         const sessionId = req.params.id
-        if(photos) {
+        if(!photos) {
             return res.status(400).json({error: "Fotos não recebidas"});
         } 
         const session = await Session.findOne({_id: sessionId});
