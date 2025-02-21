@@ -1,7 +1,7 @@
 import express from 'express';
 import ItemController from './controllers/ItemController.js';
 import UserController from './controllers/UsersController.js';
-import SessionCotroller from './controllers/SessionCotroller.js';
+import SessionController from './controllers/SessionController.js';
 import Open_door from './esp32/open_door.js';
 const routes = express.Router();
 
@@ -18,8 +18,8 @@ routes.post('/usuarios', UserController.create);
 routes.post('/login', UserController.search )
 
 // SESSÃO
-routes.get('/sessao', SessionCotroller.read);
-routes.post('/sessao/:type/:userId/:itemId', SessionCotroller.create);
+routes.get('/sessao', SessionController.read);
+routes.post('/sessao/:type/:userId/:itemId', SessionController.create);
 routes.delete('/sessao/:id', SessionController.delete);
 
 // ESP32
