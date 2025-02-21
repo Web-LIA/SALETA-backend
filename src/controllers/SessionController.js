@@ -13,7 +13,7 @@ export default {
         const type = req.params.type;
         const userId = req.params.userId;
         const itemId = req.params.itemId;
-        if (type != "guardar" || type != "buscar") {
+        if (type != "guardar" && type != "buscar") {
             return res.status(400).json({error: "tipo indevido"});
         }
         // falta verificar se o userId e itemId são corretos
@@ -21,9 +21,8 @@ export default {
             type,
             userId,
             itemId
-        }).then(
-            lastSessionId = sessionCreated._id
-        );
+        })
+        lastSessionId = sessionCreated._id;
         return res.json(sessionCreated);
     },
 
