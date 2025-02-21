@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import '../models/Session.js';
 const Session = mongoose.model("sessions");
-let lastSessionId = "TESTE";
+var lastSessionId = "TESTE";
 
 export default {
     async read (req, res){
