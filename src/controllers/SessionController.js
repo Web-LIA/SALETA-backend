@@ -28,7 +28,7 @@ export default {
     },
 
     async getSessionId(req, res) {
-        return lastSessionId;
+        return res.json({id: lastSessionId});
     },
 
     async sendEspPhotos(req, res) {
