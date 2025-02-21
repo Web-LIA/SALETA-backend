@@ -20,6 +20,7 @@ routes.post('/login', UserController.search )
 // SESSÃO
 routes.get('/sessao', SessionController.read);
 routes.post('/sessao/:type/:userId/:itemId', SessionController.create);
+routes.post('/sessao/:id', SessionController.sendEspPhotos);
 routes.delete('/sessao/:id', SessionController.delete);
 
 // ESP32

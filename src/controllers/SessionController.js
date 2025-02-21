@@ -22,6 +22,20 @@ export default {
         return res.json(sessionCreated);
     },
 
+    async sendEspPhotos(req, res) {
+        const photos = req.body.photos
+        const sessionId = req.params.id
+        if(photos) {
+            return res.status(400).json({error: "Fotos não recebidas"});
+        } 
+        const session = await Session.findOne({_id: id});
+        if (session.photos) {
+            session.photos = photos;
+        } 
+        await session.save();
+        return res.json(session);
+    },
+
     async delete(req, res) {
         const id = req.params.id
         if (!id) {
