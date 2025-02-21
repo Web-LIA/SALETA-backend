@@ -1,4 +1,4 @@
-var doorStatus = "open"
+var doorStatus = "close"
 
 export default {
     getDoorStatus(req, res) {
@@ -7,9 +7,11 @@ export default {
 
     openDoor(req, res) {
         doorStatus = "open";
+        return res.json({doorStatus: doorStatus});
     },
 
     closeDoor(req, res) {
         doorStatus = "close";
+        return res.json({doorStatus: doorStatus});
     }
 }
