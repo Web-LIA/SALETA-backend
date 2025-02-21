@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import '../models/Session.js';
 const Session = mongoose.model("sessions");
+let lastSessionId = "";
 
 export default {
     async read (req, res){
@@ -18,8 +19,14 @@ export default {
             type,
             userId,
             itemId
-        });
+        }).then(
+            lastSessionId = sessionCreated._id
+        );
         return res.json(sessionCreated);
+    },
+
+    async getSessionId(req, res) {
+        return lastSessionId;
     },
 
     async sendEspPhotos(req, res) {
