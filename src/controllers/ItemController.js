@@ -42,7 +42,7 @@ export default {
             return res.status(400).json({error: "Necessário um id"});
         }
         const item = await Item.findOne({_id: id});
-        item.found - true;
+        item.found = true;
         await item.save();
         return res.json(item);
     }
