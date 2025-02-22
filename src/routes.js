@@ -10,7 +10,7 @@ const routes = express.Router();
 routes.get('/itens', ItemController.read);
 routes.post('/itens', ItemController.create);
 routes.delete('/itens/:id', ItemController.delete);
-routes.post('/item/found/:id', ItemController.updateItemFound);
+routes.post('/itens/found/:id', ItemController.updateItemFound);
 
 // USUARIOS
 routes.get('/usuarios', UserController.read);
