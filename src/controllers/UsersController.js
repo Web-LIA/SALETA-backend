@@ -23,6 +23,20 @@ export default {
         });
         return res.json(userCreated);
     },
+
+    async id(req,res){
+        const UserList = await User.find();
+        
+        
+        const users = [];
+
+        UserList.forEach((usuario) =>{
+            users.push({user:usuario.login ,_id:usuario._id});
+        })
+        
+        return res.json(users);
+    },
+
     async search(req,res){
         const {login,password} = req.body
         const user = await User.find({login:login});

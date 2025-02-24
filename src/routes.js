@@ -18,6 +18,7 @@ routes.post('/usuarios', UserController.create);
 
 // LOGIN
 routes.post('/login', UserController.search )
+routes.get('/login/id',UserController.id);
 
 // SESSÃO
 routes.get('/sessao', SessionController.read);
