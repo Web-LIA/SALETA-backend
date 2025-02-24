@@ -8,6 +8,12 @@ export default {
         return res.json(itemList);
     },
 
+    async readOne (req, res) {
+        const id = req.params.id;
+        const item = await Item.findOne({_id: id});
+        return res.json(item);
+    },
+
     async create(req, res) {
         const { title, color, size, description, photo } = req.body;
         if (!title) {
