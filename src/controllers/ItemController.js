@@ -11,7 +11,12 @@ export default {
     async readOne (req, res) {
         const id = req.params.id;
         const item = await Item.findOne({_id: id});
-        return res.json(item);
+        if (item) {
+            return res.json(item);
+        }
+        else {
+            return res.status(400).json({error: "Item não encontrado"});
+        }
     },
 
     async create(req, res) {
