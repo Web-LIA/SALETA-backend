@@ -8,7 +8,7 @@ const routes = express.Router();
 
 // ITENS
 routes.get('/itens', ItemController.read);
-routes.get('itens/:id', ItemController.readOne);
+routes.get('/itens/:id', ItemController.readOne);
 routes.post('/itens', ItemController.create);
 routes.delete('/itens/:id', ItemController.delete);
 routes.post('/itens/found/:id', ItemController.updateItemFound);
