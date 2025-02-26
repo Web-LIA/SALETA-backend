@@ -22,11 +22,15 @@ export default {
             userId,
             itemId
         })
-        lastSessionId = sessionCreated._id;
+        setTimeout(() => {
+            lastSessionId = sessionCreated._id;
+        }, 3000);
+       
         return res.json(sessionCreated);
     },
 
     async getSessionId(req, res) {
+        
         return res.json({id: lastSessionId});
     },
 
