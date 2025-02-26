@@ -1,17 +1,20 @@
-var doorStatus = "OFF"
+import mongoose from "mongoose";
+import '../models/Config.js';
+import ConfigController from "./ConfigController.js";
 
 export default {
-    getDoorStatus(req, res) {
+    async getDoorStatus(req, res) {
+      let doorStatus = await ConfigController.doorStatus();
+      console.log("STATUS:" + doorStatus)
         return res.json({doorStatus: doorStatus});
     },
-
-    openDoor(req, res) {
-        doorStatus = "ON";
-        return res.json({doorStatus: doorStatus});
+    async openDoor(req, res) {
+        await ConfigController.setDoorStatus("ON");
+        return res.json({doorStatus:"PORTA ABERTA"})
     },
 
-    closeDoor(req, res) {
-        doorStatus = "OFF";
-        return res.json({doorStatus: doorStatus});
+    async closeDoor(req, res) {
+        await ConfigController.setDoorStatus("OFF");
+        return res.json({doorStatus:"PORTA FECHADA"})
     }
 }

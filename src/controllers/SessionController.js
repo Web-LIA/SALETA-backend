@@ -1,8 +1,9 @@
 import mongoose from "mongoose";
 import '../models/Session.js';
+import '../models/Config.js'
 const Session = mongoose.model("sessions");
-var lastSessionId = "TESTE";
-
+const Config = mongoose.model("config");
+const configId = "67be9e30a9d5c66c3fbf7398"
 export default {
     async read (req, res){
         const sessionList = await Session.find();
@@ -22,15 +23,17 @@ export default {
             userId,
             itemId
         })
-        setTimeout(() => {
-            lastSessionId = sessionCreated._id;
+        setTimeout(async () => {
+            const config = await Config.findOne({_id: configId});
+            config.lastSessionId = sessionCreated._id
+            config.save();
         }, 3000);
        
         return res.json(sessionCreated);
     },
 
     async getSessionId(req, res) {
-        
+        let lastSessionId = await ConfigController.lastSessionId();
         return res.json({id: lastSessionId});
     },
 
