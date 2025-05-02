@@ -45,7 +45,7 @@ export default {
         } 
         const session = await Session.findOne({_id: sessionId});
         if (session.photos) {
-            session.photos = photos;
+            session.photos.push(photos);
         } 
         await session.save();
         return res.json(session);
