@@ -23,10 +23,12 @@ export default {
             userId,
             itemId
         })
+        
         setTimeout(async () => {
             const config = await Config.findOne({_id: configId});
-            config.lastSessionId = sessionCreated._id
+            config.lastSessionId = sessionCreated._id;
             config.save();
+            await Mqtt_msg(); // Call the function to send the door status via MQTT
         }, 3000);
        
         return res.json(sessionCreated);

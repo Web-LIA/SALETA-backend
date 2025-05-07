@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import '../models/Config.js';
+import Mqtt_msg from "../esp32/mqtt_msg.js";
 const Config = mongoose.model("config");
 const configId = "67be9e30a9d5c66c3fbf7398"
 export default {
@@ -34,8 +35,8 @@ export default {
     },
     async doorStatus(req,res){
 
-        const item = await Config.findOne({_id: configId})
-        return res.json({doorStatus:item.doorStatus});   
+        const item = await Config.findOne({ _id: configId });
+        return item; // Retorna o objeto completo para reutilização
     },
     async lastSessionId(req , res){
 
@@ -48,14 +49,15 @@ export default {
         const item = await Config.findOne({_id:configId})
         item.doorStatus = "ON"
         await item.save();
-        return res.json({doorStatus:"PORTA ABERTA"})
+        let message = await Mqtt_msg(); // Call the function to send the door status via MQTT
+        return res.json({doorStatus:"PORTA ABERTA",message})
     },
     async closeDoor(req,res){
 
         const item = await Config.findOne({_id:configId})
         item.doorStatus = "OFF"
         await item.save();
-        return res.json({doorStatus:"PORTA FECHADA"})
+        let message =await Mqtt_msg(); // Call the function to send the door status via MQTT
+        return res.json({doorStatus:"PORTA FECHADA",message})
     }
-       
  }

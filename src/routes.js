@@ -30,8 +30,8 @@ routes.post('/sessao/:id', SessionController.sendEspPhotos);
 routes.delete('/sessao/:id', SessionController.delete);
 
 // ESP32
-// routes.post('/open-door',Open_door);
 routes.get('/porta', ConfigController.doorStatus);
+routes.get('/portaStatus', DoorController.sendDoorStatus);
 routes.post('/porta/abrir', ConfigController.openDoor);
 routes.post('/porta/fechar', ConfigController.closeDoor);
 
