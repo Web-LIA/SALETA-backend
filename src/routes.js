@@ -36,7 +36,6 @@ routes.post('/porta/abrir', ConfigController.openDoor);
 routes.post('/porta/fechar', ConfigController.closeDoor);
 
 //CONFIG
-
 routes.get('/config',ConfigController.read);
 routes.post('/config',ConfigController.create);
 

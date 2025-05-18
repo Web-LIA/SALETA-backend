@@ -1,9 +1,7 @@
 import mongoose from "mongoose";
 import '../models/Config.js';
 import ConfigController from "./ConfigController.js";
-import aedes from 'aedes';
-import net from 'net';
-import { broker } from '../index.js';
+import { broker } from '../config/mqttConfig.js';
 import Mqtt_msg from "../esp32/mqtt_msg.js";
 export default {
     async getDoorStatus(req, res) {

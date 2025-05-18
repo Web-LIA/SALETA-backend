@@ -1,7 +1,7 @@
-import { broker } from "../index.js";
+import { broker } from "../config/mqttConfig.js";
 import ConfigController from "../controllers/ConfigController.js";
 
-export default async function  Mqtt_msg() {
+export default async function  Mqtt_msg( idChanged =false ) { 
      try {
         // Fetch the door status from the database
         const item = await ConfigController.doorStatus();
@@ -10,7 +10,7 @@ export default async function  Mqtt_msg() {
 
         // Publish the door status to the MQTT broker
         const topic = 'config/esp32';
-        const message = JSON.stringify({ doorStatus , lastSessionId });
+        const message = JSON.stringify({ doorStatus , lastSessionId,idChanged });
 
         broker.publish({ topic, payload: message }, (err) => {
             if (err) {

@@ -1,9 +1,12 @@
 import mongoose from "mongoose";
 import '../models/Session.js';
 import '../models/Config.js'
+import Mqtt_msg from "../esp32/mqtt_msg.js";
+import record from "../esp32/record.js";
+
 const Session = mongoose.model("sessions");
 const Config = mongoose.model("config");
-const configId = "67be9e30a9d5c66c3fbf7398"
+const configId = "67be9e30a9d5c66c3fbf7398";
 export default {
     async read (req, res){
         const sessionList = await Session.find();
@@ -23,12 +26,13 @@ export default {
             userId,
             itemId
         })
-        
+         
         setTimeout(async () => {
             const config = await Config.findOne({_id: configId});
             config.lastSessionId = sessionCreated._id;
             config.save();
-            await Mqtt_msg(); // Call the function to send the door status via MQTT
+            await Mqtt_msg(true); // Call the function to send the door status via MQTT
+            record.startNewVideo(sessionCreated._id); // Start recording the video
         }, 3000);
        
         return res.json(sessionCreated);
