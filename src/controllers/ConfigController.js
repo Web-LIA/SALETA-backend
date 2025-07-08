@@ -48,7 +48,7 @@ export default {
     async idChanged(req, res) {
         const item = await Config.findOne({_id:configId});
         console.log(item);
-        return res.json({idChanged: item.idChanged});
+        return item.idChanged;
     },
     async idChangedUpdate(newIdChanged){
         const item = await Config.findOne({_id:configId});
