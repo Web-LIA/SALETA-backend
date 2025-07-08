@@ -24,6 +24,7 @@ broker.on('publish', async (packet, client) => {
       if(packet.topic === "session/esp32") {
         console.log(packet);
         record.endCurrentVideo();
+        ConfigController.idChangedUpdate(false);
       }
     }
 })

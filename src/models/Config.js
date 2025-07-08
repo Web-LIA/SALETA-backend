@@ -9,6 +9,10 @@ const Config = new mongoose.Schema({
     doorStatus: {
         type:String,
         required:true
+    },
+    idChanged: {
+        type:Boolean,
+        default:false
     }
 
 

@@ -16,7 +16,8 @@ export default {
         }
         const itemCreated = await Config.create({
             lastSessionId,
-            doorStatus
+            doorStatus,
+            idChanged: false 
         });
         return res.json(itemCreated);
     },
@@ -44,6 +45,18 @@ export default {
         console.log(item)
         return res.json({id:item.lastSessionId});  
     },
+    async idChanged(req, res) {
+        const item = await Config.findOne({_id:configId});
+        console.log(item);
+        return res.json({idChanged: item.idChanged});
+    },
+    async idChangedUpdate(newIdChanged){
+        const item = await Config.findOne({_id:configId});
+        item.idChanged = newIdChanged;
+        await item.save();
+        return item;
+    },
+
     async openDoor(req,res){
 
         const item = await Config.findOne({_id:configId})
