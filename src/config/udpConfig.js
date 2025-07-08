@@ -88,12 +88,6 @@ udpServer.on('message', (msg, rinfo) => {
             if (parts.length >= 3) {
                 expectedLength = parseInt(parts[1]);
                 totalChunks = parseInt(parts[2]);
-                
-                if (expectedLength > MAX_FRAME_SIZE) {
-                    console.warn(`Tamanho de frame muito grande: ${expectedLength}`);
-                    return;
-                }
-                
                 frameBuffer = Buffer.alloc(expectedLength);
                 receivedChunks = 0;
                 //console.log(`Novo frame iniciado. Tamanho: ${expectedLength}, Chunks: ${totalChunks}`);
