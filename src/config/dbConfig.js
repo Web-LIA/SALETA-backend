@@ -1,6 +1,5 @@
 import mongoose from "mongoose";
-
-const connectionString = "mongodb+srv://ryanpimentelbr:saleta@saleta.soys9.mongodb.net/?retryWrites=true&w=majority&appName=SALETA";
+import { connectionString } from "../api/api_keys.js";
 
 const connectDatabase = async () => {
     try {

@@ -34,6 +34,8 @@ routes.get('/porta', ConfigController.doorStatus);
 routes.get('/portaStatus', DoorController.sendDoorStatus);
 routes.post('/porta/abrir', ConfigController.openDoor);
 routes.post('/porta/fechar', ConfigController.closeDoor);
+routes.get('/video/:id', SessionController.getVideo);
+routes.get('/video/convert/:id', SessionController.convertVideo); 
 
 //CONFIG
 routes.get('/config',ConfigController.read);

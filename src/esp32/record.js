@@ -1,9 +1,11 @@
 import fs from 'fs';
 import path from 'path';
 import { Buffer } from 'buffer';
+import convertVideo from '../config/converter.js';
+import converter from '../config/converter.js';
 
 // Configurações
-const STORAGE_DIR = './videos';
+const STORAGE_DIR = './videos/mjpeg';
 const FPS = 15;
 
 // Cria diretório se não existir
@@ -46,7 +48,13 @@ function recordFrame(latestFrame) {
 function endCurrentVideo() {
     if (currentVideo.fileStream && currentVideo.id) {
         currentVideo.fileStream.end();
-        console.log(`Vídeo finalizado com ${currentVideo.frameCount} frames`);
+        converter(currentVideo.id)
+            .then(() => {
+                console.log(`Vídeo ${currentVideo.id} finalizado com ${currentVideo.frameCount} frames`);
+            })
+            .catch(err => {
+                console.error(`Erro ao converter vídeo ${currentVideo.id}:`, err);
+            });
         currentVideo = {
             id: null,
             startTime: null,
@@ -67,4 +75,4 @@ export default {
     startNewVideo,
     recordFrame,
     endCurrentVideo
-}
+} 
