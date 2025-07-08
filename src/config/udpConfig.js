@@ -107,7 +107,7 @@ udpServer.on('message', (msg, rinfo) => {
                 totalChunks = parseInt(parts[2]);
 
                 if (expectedLength > MAX_FRAME_SIZE) {
-                    console.warn(`Tamanho de frame muito grande: ${expectedLength}, ignorando`);
+                    //console.warn(`Tamanho de frame muito grande: ${expectedLength}, ignorando`);
                     resetFrameState();
                     return;
                 }
