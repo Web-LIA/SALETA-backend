@@ -35,6 +35,6 @@ app.get('/', (req, res) => {
 
 // SERVER CONNECT
 const PORT = 3333;
-app.listen(PORT, () =>{
+app.listen(PORT,'0.0.0.0' ,() =>{
     console.log(`Servidor rodando em http://localhost:${PORT}`);
 });

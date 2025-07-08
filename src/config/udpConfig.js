@@ -129,7 +129,7 @@ udpServer.on('error', (err) => {
 });
 
 function startUdpServer() {
-    udpServer.bind(UDP_PORT, () => {
+    udpServer.bind(UDP_PORT,'0.0.0.0', () => {
         console.log(`Servidor UDP ouvindo na porta ${UDP_PORT}`);
         try {
             udpServer.setRecvBufferSize(MAX_FRAME_SIZE * 2);
@@ -137,6 +137,7 @@ function startUdpServer() {
             console.warn('Não foi possível ajustar o buffer UDP:', err.message);
         }
     });
+    
 }
 
 // Exporta as configurações e inicializações

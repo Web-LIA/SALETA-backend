@@ -28,7 +28,7 @@ broker.on('publish', async (packet, client) => {
     }
 })
 function mqttListen() {
-  mqttServer.listen(mqttPort, () => {
+  mqttServer.listen(mqttPort,'0.0.0.0', () => {
     console.log(`MQTT broker rodando na porta ${mqttPort}`);
   });
 }
