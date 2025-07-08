@@ -18,7 +18,8 @@ export default {
     async closeDoor(req, res) {
         await ConfigController.setDoorStatus("OFF");
         let message = await Mqtt_msg(); // Call the function to send the door status via MQTT
-        return res.json({doorStatus:"PORTA FECHADA",message})
+        await ConfigController.idChangedUpdate(false);
+        return res.json({doorStatus:"PORTA FECHADA",message});
     },
     async sendDoorStatus(req, res) {
         try {

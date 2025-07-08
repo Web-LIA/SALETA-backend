@@ -9,10 +9,10 @@ export default async function  Mqtt_msg( idChanged =false ) {
         const lastSessionId = item.lastSessionId;
 
         if(idChanged){
-            ConfigController.idChangedUpdate(idChanged);
+           await ConfigController.idChangedUpdate(idChanged);
         }else{
             // If idChanged is false, we can assume the door status has not changed
-            idChanged = ConfigController.idChanged();
+            idChanged = await ConfigController.idChanged();
         }
         // Publish the door status to the MQTT broker
         const topic = 'config/esp32';
