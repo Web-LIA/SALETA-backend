@@ -2,7 +2,7 @@ import aedes from 'aedes';
 import net from 'net';
 import Mqtt_msg from '../esp32/mqtt_msg.js';
 import record from '../esp32/record.js';
-
+import ConfigController from '../controllers/ConfigController.js';
 export const broker = aedes();
 const mqttServer = net.createServer(broker.handle);
 const mqttPort = 1883;
