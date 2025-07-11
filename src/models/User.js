@@ -6,9 +6,13 @@ const  User = new mongoose.Schema({
         required: true
     },
     password:{
-        type:String,
+        type: String,
         required:true
-    }
+    },
+    role: {
+        type: String,
+        required: true
+    },
 });
 
 mongoose.model("users", User);

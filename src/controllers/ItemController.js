@@ -46,7 +46,11 @@ export default {
             return res.status(401).json({error: "Não foi encontrado o item para deletar"});
         }
     },
-
+    async onlyNotFound(req, res) {
+        const items = await Item.find({found: false});
+        console.log(items)
+        return res.json(items);
+    },
     async updateItemFound(req, res) {
         const id = req.params.id
         if (!id) {
@@ -55,6 +59,6 @@ export default {
         const item = await Item.findOne({_id: id});
         item.found = true;
         await item.save();
-        return res.json(item);
+        return res.json(item); 
     }
 }

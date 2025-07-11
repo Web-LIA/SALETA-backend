@@ -6,6 +6,7 @@ import Mqtt_msg from "../esp32/mqtt_msg.js";
 export default {
     async getDoorStatus(req, res) {
         let doorStatus = await ConfigController.doorStatus();
+        doorStatus = doorStatus.doorStatus; // Extract the door status from the item
         console.log("STATUS:" + doorStatus)
         return res.json({doorStatus: doorStatus});
     },

@@ -34,6 +34,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Rota HTTP para streaming MJPEG
 app.get('/stream', (req, res) => {
+    /*  #swagger.tags = ['Video']
+        #swagger.summary = 'Inicia o streaming de vídeo MJPEG'
+        #swagger.description = 'Endpoint que fornece um stream de vídeo contínuo no formato MJPEG. Use em uma tag <img src="http://localhost:3333/stream"> para visualizar.'
+    */
     console.log('Novo cliente MJPEG conectado');
     res.writeHead(200, {
         'Content-Type': 'multipart/x-mixed-replace; boundary=frame',

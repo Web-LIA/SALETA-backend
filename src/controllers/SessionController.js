@@ -17,6 +17,9 @@ const configId = "67be9e30a9d5c66c3fbf7398";
 export default {
     async read (req, res){
         const sessionList = await Session.find();
+        sessionList.map(session => {
+            session.photos = [];
+        });
         return res.json(sessionList);
     },
 
