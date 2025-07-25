@@ -29,7 +29,8 @@ export default {
             color,
             size,
             description,
-            photo
+            photo,
+            date: Date.now()
         });
         return res.json(itemCreated);
     },
