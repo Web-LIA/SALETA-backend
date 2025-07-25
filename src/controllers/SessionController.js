@@ -31,7 +31,8 @@ export default {
         const sessionCreated = await Session.create({
             type,
             userId,
-            itemId
+            itemId,
+            date: Date.now()
         })
          
         setTimeout(async () => {
